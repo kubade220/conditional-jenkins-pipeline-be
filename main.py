@@ -1,10 +1,17 @@
-from flask import Flask
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/')
-def hello():
+# Enable CORS for all routes
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/")
+def read_root():
     return "Hello, From Main Branch"
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
