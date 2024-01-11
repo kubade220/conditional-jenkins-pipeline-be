@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: main-repo
     ports:
-      - 8080:5000
+      - 8880:5000
     networks:
       - conditional-pipeline
 
